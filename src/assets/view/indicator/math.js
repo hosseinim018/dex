@@ -518,3 +518,18 @@ export function cci($high, $low, $close, window, mult) {
   tpmad[0] = Infinity;
   return pointwise((a, b, c) => (a - b) / (c * mult), tp, tpsma, tpmad);
 }
+
+/**
+ * Calculates the Chande's Oscillator (CHO) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number[]} $volume - The volume values of the series.
+ * @param {number} winshort - The short window size for calculating EMA.
+ * @param {number} winlong - The long window size for calculating EMA.
+ * @returns {number[]} - The CHO values.
+ */
+export function cho($high, $low, $close, $volume, winshort, winlong) {
+  let adli = adl($high, $low, $close, $volume);
+  return pointwise((s, l) => s - l, ema(adli, winshort), ema(adli, winlong));
+}
