@@ -48,3 +48,16 @@ export function sd(series) {
   return Math.sqrt(E2 - E * E);
 }
 
+/**
+ * Calculates the covariance between two series.
+ * @param {number[]} f - The first input series.
+ * @param {number[]} g - The second input series.
+ * @returns {number} - The covariance between the two series.
+ */
+export function cov(f, g) {
+  let Ef = mean(f),
+    Eg = mean(g);
+  let Efg = mean(pointwise((a, b) => a * b, f, g));
+  return Efg - Ef * Eg;
+}
+
