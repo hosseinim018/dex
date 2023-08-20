@@ -289,3 +289,19 @@ export function ebb($close, window, mult) {
   const lower = pointwise((a, b) => a - b * mult, ma, dev);
   return { lower, middle: ma, upper };
 }
+
+/**
+ * Calculates the Keltner Channel of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for the Keltner channel.
+ * @param {number} mult - The multiplier for the Average True Range in the Keltner channel.
+ * @returns {Object} - The Keltner Channel values.
+ */
+export function keltner($high, $low, $close, window, mult) {
+  const middle = ema($close, window);
+  const upper = pointwise((a, b) => a + mult * b, middle, atr($high, $low, $close, window));
+  const lower = pointwise((a, b) => a - mult * b, middle, atr($high, $low, $close, window));
+  return { lower, middle, upper };
+}
