@@ -65,6 +65,7 @@ Explain how to use your project and include code examples if necessary.
 - [fi($close, $volume, window)](###fi): Calculates the Force Index (FI) of a series.
 - [kst($close, w1, w2, w3, w4, s1, s2, s3, s4, sig)](###kst): Calculates the Know Sure Thing (KST) of a series.
 - [macd($close, winshort, winlong, winsig)](###macd): Calculates the Moving Average Convergence Divergence (MACD) of a series.
+- [mfi($high, $low, $close, $volume, window)](###mfi): Calculates the Money Flow Index (MFI) of a series.
 - [](###):
 ## Table of Contents
 
