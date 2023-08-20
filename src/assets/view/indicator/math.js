@@ -99,3 +99,21 @@ export function pointwise(operation, ...serieses) {
   }
   return result;
 }
+
+/**
+ * Applies a rolling operation to a series.
+ * @param {function} operation - The rolling operation.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the rolling operation.
+ * @returns {number[]} - The result of the rolling operation.
+ */
+export function rolling(operation, series, window) {
+  const result = [];
+  for (let i = 0, len = series.length; i < len; i++) {
+    const startIndex = Math.max(i + 1 - window, 0);
+    const slice = series.slice(startIndex, i + 1);
+    result.push(operation(slice));
+  }
+  return result;
+}
+
