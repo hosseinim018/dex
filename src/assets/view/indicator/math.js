@@ -582,3 +582,24 @@ export function macd($close, winshort, winlong, winsig) {
     const hist = pointwise((a, b) => a - b, line, signal);
     return { line: line, signal: signal, hist: hist };
 }
+/**
+ * Calculates the Money Flow Index (MFI) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number[]} $volume - The volume values of the series.
+ * @param {number} window - The window size for calculating MFI.
+ * @returns {number[]} - The MFI values.
+ */
+export function mfi($high, $low, $close, $volume, window) {
+    let pmf = [0], nmf = [0];
+    let tp = typicalPrice($high, $low, $close);
+    for (let i = 1, len = $close.length; i < len; i++) {
+        let diff = tp[i] - tp[i - 1];
+        pmf.push(diff >= 0 ? tp[i] * $volume[i] : 0);
+        nmf.push(diff < 0 ? tp[i] * $volume[i] : 0);
+    }
+    pmf = rolling((s) => s.reduce((sum, x) => sum + x, 0), pmf, window);
+    nmf = rolling((s) => s.reduce((sum, x) => sum + x, 0), nmf, window);
+    return pointwise((a, b) => 100 - 100 / (1 + a / b), pmf, nmf);
+}
