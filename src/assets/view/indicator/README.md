@@ -61,6 +61,11 @@ Explain how to use your project and include code examples if necessary.
 - [adx($high, $low, $close, window)](###adx): Calculates the Average Directional Index (ADX) of a series.
 - [bbp($close, window, mult)](###bbp): Calculates the Bollinger Bands Percentage (BBP) of a series.
 - [cci($high, $low, $close, window, mult)](###cci): Calculates the Commodity Channel Index (CCI) of a series.
+- [cho($high, $low, $close, $volume, winshort, winlong)](###cho): Calculates the Chande's Oscillator (CHO) of a series.
+- [](###):
+- [](###):
+- [](###):
+- [](###):
 - [](###):
 ## Table of Contents
 
