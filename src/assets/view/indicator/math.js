@@ -567,3 +567,18 @@ export function kst($close, w1, w2, w3, w4, s1, s2, s3, s4, sig) {
     let line = pointwise((a, b, c, d) => a + b * 2 + c * 3 + d * 4, rcma1, rcma2, rcma3, rcma4);
     return { line: line, signal: sma(line, sig) };
 }
+
+/**
+ * Calculates the Moving Average Convergence Divergence (MACD) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} winshort - The short EMA window size.
+ * @param {number} winlong - The long EMA window size.
+ * @param {number} winsig - The signal EMA window size.
+ * @returns {Object} - The MACD line, signal line, and histogram values.
+ */
+export function macd($close, winshort, winlong, winsig) {
+    const line = pointwise((a, b) => a - b, ema($close, winshort), ema($close, winlong));
+    const signal = ema(line, winsig);
+    const hist = pointwise((a, b) => a - b, line, signal);
+    return { line: line, signal: signal, hist: hist };
+}
