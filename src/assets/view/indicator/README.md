@@ -70,7 +70,7 @@ Explain how to use your project and include code examples if necessary.
 - [roc($close, window)](###roc): Calculates the Rate of Change (ROC) of a series.
 - [rsi($close, window)](###rsi): Calculates the Relative Strength Index (RSI) of a series.
 - [stoch($high, $low, $close, window, signal, smooth)](###stoch): Calculates the Stochastic Oscillator of a series.
-- [](###):
+- [stochRsi($close, window, signal, smooth)](###stochRsi): Calculates the Stochastic RSI (StochRSI) of a series.
 - [](###):
 ## Table of Contents
 
