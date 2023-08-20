@@ -1,6 +1,6 @@
 /**
  * @module view-technical
- * @description this module prepare some oprating fo rtechnical analysis.
+ * @description this module prepare some oprating of technical analysis.
  * @version 1.0.0
  * @license MIT
  *
