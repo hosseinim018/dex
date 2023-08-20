@@ -84,3 +84,18 @@ export function cor(f, g) {
 export function mad(array) {
   return mae(array, new Array(array.length).fill(mean(array)));
 }
+
+/**
+ * Applies a pointwise operation to one or more series.
+ * @param {function} operation - The pointwise operation.
+ * @param {...number[]} serieses - The input serieses.
+ * @returns {number[]} - The result of the pointwise operation.
+ */
+export function pointwise(operation, ...serieses) {
+  let result = [];
+  for (let i = 0, len = serieses[0].length; i < len; i++) {
+    let iseries = (i) => serieses.map((x) => x[i]);
+    result[i] = operation(...iseries(i));
+  }
+  return result;
+}
