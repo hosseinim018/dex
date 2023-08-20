@@ -216,3 +216,14 @@ export function wilderSmooth(series, window) {
   }
   return result;
 }
+
+/**
+ * Calculates the Typical Price of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @returns {number[]} - The Typical Price values.
+ */
+export function typicalPrice($high, $low, $close) {
+  return pointwise((a, b, c) => (a + b + c) / 3, $high, $low, $close);
+}
