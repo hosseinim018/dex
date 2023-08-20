@@ -274,3 +274,18 @@ export function dema($close, window) {
   const ema1 = ema($close, window);
   return pointwise((a, b) => 2 * a - b, ema1, ema(ema1, window));
 }
+
+/**
+ * Calculates the Exponential Bollinger Bands (EBB) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for the EBB.
+ * @param {number} mult - The multiplier for the exponential deviation in the EBB.
+ * @returns {Object} - The EBB values.
+ */
+export function ebb($close, window, mult) {
+  const ma = ema($close, window);
+  const dev = expdev($close, window);
+  const upper = pointwise((a, b) => a + b * mult, ma, dev);
+  const lower = pointwise((a, b) => a - b * mult, ma, dev);
+  return { lower, middle: ma, upper };
+}
