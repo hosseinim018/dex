@@ -67,7 +67,7 @@ Explain how to use your project and include code examples if necessary.
 - [macd($close, winshort, winlong, winsig)](###macd): Calculates the Moving Average Convergence Divergence (MACD) of a series.
 - [mfi($high, $low, $close, $volume, window)](###mfi): Calculates the Money Flow Index (MFI) of a series.
 - [obv($close, $volume, signal)](###obv): Calculates the On-Balance Volume (OBV) of a series.
-- [](###):
+- [roc($close, window)](###roc): Calculates the Rate of Change (ROC) of a series.
 - [](###):
 - [](###):
 - [](###):
