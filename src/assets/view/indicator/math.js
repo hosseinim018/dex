@@ -36,3 +36,15 @@ export function mean(series) {
   }
   return sum / series.length;
 }
+
+/**
+ * Calculates the standard deviation (SD) of a series.
+ * @param {number[]} series - The input series.
+ * @returns {number} - The standard deviation of the series.
+ */
+export function sd(series) {
+  let E = mean(series);
+  let E2 = mean(pointwise((x) => x * x, series));
+  return Math.sqrt(E2 - E * E);
+}
+
