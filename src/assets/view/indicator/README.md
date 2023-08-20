@@ -55,9 +55,8 @@ Explain how to use your project and include code examples if necessary.
 - [psar($high, $low, stepfactor, maxfactor)](###psar): Calculates the Parabolic Stop and Reverse (PSAR) values based on high and low prices, step factor, and maximum factor.
 - [tema($close, window)](###tema): Calculates the Triple Exponential Moving Average (TEMA) of a series.
 - [vbp($close, $volume, zones, left, right)](###vbp): Calculates the Volume By Price (VBP) of a series.
-- []():
-- []():
-- []():
+- [vwap($high, $low, $close, $volume)](###vwap): Calculates the Volume Weighted Average Price (VWAP) of a series.
+
 ## Table of Contents
 
 - [vi](#vi)
