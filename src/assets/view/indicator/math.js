@@ -263,3 +263,14 @@ export function bb($close, window, mult) {
   const lower = pointwise((a, b) => a - b * mult, ma, dev);
   return { lower, middle: ma, upper };
 }
+
+/**
+ * Calculates the Double Exponential Moving Average (DEMA) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for the DEMA.
+ * @returns {number[]} - The DEMA values.
+ */
+export function dema($close, window) {
+  const ema1 = ema($close, window);
+  return pointwise((a, b) => 2 * a - b, ema1, ema(ema1, window));
+}
