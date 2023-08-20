@@ -688,3 +688,28 @@ export function stochRsi($close, window, signal, smooth) {
     }
     return { line: K, signal: sma(K, signal) };
 }
+/**
+ * Calculates the Vertical Horizontal Filter (VI) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating VI.
+ * @returns {Object} - The VI plus and minus values.
+ */
+export function vi($high, $low, $close, window) {
+    let pv = [($high[0] - $low[0]) / 2], nv = [pv[0]];
+    for (let i = 1, len = $high.length; i < len; i++) {
+        pv.push(Math.abs($high[i] - $low[i - 1]));
+        nv.push(Math.abs($high[i - 1] - $low[i]));
+    }
+    let apv = rolling((s) => s.reduce((sum, x) => {
+        return sum + x;
+    }, 0), pv, window);
+    let anv = rolling((s) => s.reduce((sum, x) => {
+        return sum + x;
+    }, 0), nv, window);
+    let atr = rolling((s) => s.reduce((sum, x) => {
+        return sum + x;
+    }, 0), trueRange($high, $low, $close), window);
+    return { plus: pointwise((a, b) => a / b, apv, atr), minus: pointwise((a, b) => a / b, anv, atr) };
+}
