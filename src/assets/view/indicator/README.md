@@ -63,7 +63,7 @@ Explain how to use your project and include code examples if necessary.
 - [cci($high, $low, $close, window, mult)](###cci): Calculates the Commodity Channel Index (CCI) of a series.
 - [cho($high, $low, $close, $volume, winshort, winlong)](###cho): Calculates the Chande's Oscillator (CHO) of a series.
 - [fi($close, $volume, window)](###fi): Calculates the Force Index (FI) of a series.
-- [](###):
+- [kst($close, w1, w2, w3, w4, s1, s2, s3, s4, sig)](###kst): Calculates the Know Sure Thing (KST) of a series.
 - [](###):
 - [](###):
 - [](###):
