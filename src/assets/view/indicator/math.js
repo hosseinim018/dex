@@ -127,3 +127,13 @@ export function mae(f, g) {
   const absDiff = pointwise((a, b) => Math.abs(a - b), f, g);
   return f.length !== g.length ? Infinity : mean(absDiff);
 }
+
+/**
+ * Calculates the Simple Moving Average (SMA) of a series.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the SMA.
+ * @returns {number[]} - The SMA values.
+ */
+export function sma(series, window) {
+  return rolling((s) => mean(s), series, window);
+}
