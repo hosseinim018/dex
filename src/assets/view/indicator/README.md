@@ -5,9 +5,9 @@
 [![Build Status](https://img.shields.io/travis/yourusername/yourproject/master.svg)](https://travis-ci.org/yourusername/yourproject)
 [![Test Coverage](https://img.shields.io/codecov/c/github/yourusername/yourproject.svg)](https://codecov.io/gh/yourusername/yourproject)
 
-## Description
+## view-technical
 
-Add a brief description of your project here.
+this module prepare some oprating of technical analysis.
 
 ## Installation
 
