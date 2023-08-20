@@ -248,3 +248,18 @@ export function trueRange($high, $low, $close) {
   }
   return tr;
 }
+
+/**
+ * Calculates the Bollinger Bands (BB) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for the BB.
+ * @param {number} mult - The multiplier for the standard deviation in the BB.
+ * @returns {Object} - The Bollinger Bands values.
+ */
+export function bb($close, window, mult) {
+  const ma = sma($close, window);
+  const dev = stdev($close, window);
+  const upper = pointwise((a, b) => a + b * mult, ma, dev);
+  const lower = pointwise((a, b) => a - b * mult, ma, dev);
+  return { lower, middle: ma, upper };
+}
