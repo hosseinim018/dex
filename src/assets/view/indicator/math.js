@@ -379,3 +379,22 @@ export function vbp($close, $volume, zones, left, right) {
     }),
   };
 }
+
+/**
+ * Calculates the Volume Weighted Average Price (VWAP) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number[]} $volume - The volume values of the series.
+ * @returns {number[]} - The VWAP values.
+ */
+export function vwap($high, $low, $close, $volume) {
+  const tp = typicalPrice($high, $low, $close);
+  const cumulVTP = [$volume[0] * tp[0]];
+  const cumulV = [$volume[0]];
+  for (let i = 1, len = $close.length; i < len; i++) {
+    cumulVTP[i] = cumulVTP[i - 1] + $volume[i] * tp[i];
+    cumulV[i] = cumulV[i - 1] + $volume[i];
+  }
+  return pointwise((a, b) => a / b, cumulVTP, cumulV);
+}
