@@ -9,6 +9,17 @@
 
 this module prepare some oprating of technical analysis.
 
+## Table of Contents
+
+- [Installation](##Installation)
+- [Usage](##Usage)
+- [License](##License)
+- [Contributing](##Contributing)
+- [Versioning](##Versioning)
+- [Build and Test](##Build and Test)
+- [Support](##Support)
+
+
 ## Installation
 
 Provide instructions on how to install and use your project.
@@ -17,28 +28,6 @@ Provide instructions on how to install and use your project.
 
 Explain how to use your project and include code examples if necessary.
 
-## Table of Contents
-
-- [vi](#vi)
-- [williams](#williams)
-- [FibonacciRetracement](#fibonacciretracement)
-- [regression](#regression)
-
-## vi
-
-Calculates the Vertical Horizontal Filter (VI) of a series.
-
-```javaScript
-vi($high, $low, $close, window)
-```
-   - Parameters:
-      -  $high (array): The high values of the series.
-      -  $low (array): The low values of the series.
-      - $close (array): The close values of the series.
-      - window (number): The window size for calculating VI.
-
-   - Returns:
-        (object): An object containing the VI plus and minus values.
 
 ## License
 
