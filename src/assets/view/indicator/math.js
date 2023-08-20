@@ -335,3 +335,15 @@ export function psar($high, $low, stepfactor, maxfactor) {
     }
     return psar;
 }
+
+/**
+ * Calculates the Triple Exponential Moving Average (TEMA) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for the TEMA.
+ * @returns {number[]} - The TEMA values.
+ */
+export function tema($close, window) {
+  const ema1 = ema($close, window);
+  const ema2 = ema(ema1, window);
+  return pointwise((a, b, c) => 3 * a - 3 * b + c, ema1, ema2, ema(ema2, window));
+}
