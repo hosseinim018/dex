@@ -53,7 +53,11 @@ Explain how to use your project and include code examples if necessary.
 - [ebb($close, window, mult)](###ebb): Calculates the Exponential Bollinger Bands (EBB) of a series using a specified window size and multiplier.
 - [keltner($high, $low, $close, window, mult)](###keltner): Calculates the Keltner Channels of high, low, and close prices using a specified window size and multiplier.
 - [psar($high, $low, stepfactor, maxfactor)](###psar): Calculates the Parabolic Stop and Reverse (PSAR) values based on high and low prices, step factor, and maximum factor.
-
+- [tema($close, window)](###tema): Calculates the Triple Exponential Moving Average (TEMA) of a series.
+- []():
+- []():
+- []():
+- []():
 ## Table of Contents
 
 - [vi](#vi)
