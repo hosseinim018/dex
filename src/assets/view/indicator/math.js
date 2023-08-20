@@ -305,3 +305,33 @@ export function keltner($high, $low, $close, window, mult) {
   const lower = pointwise((a, b) => a - mult * b, middle, atr($high, $low, $close, window));
   return { lower, middle, upper };
 }
+
+/**
+ * Calculates the Parabolic Stop and Reverse (PSAR) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number} stepfactor - The step factor for the PSAR.
+ * @param {number} maxfactor - The maximum step factor for the PSAR.
+ * @returns {number[]} - The PSAR values.
+ */
+export function psar($high, $low, stepfactor, maxfactor) {
+    let isUp = true;
+    let factor = stepfactor;
+    let extreme = Math.max($high[0], $high[1]);
+    let psar = [$low[0], Math.min($low[0], $low[1])];
+    let cursar = psar[1];
+    for (let i = 2, len = $high.length; i < len; i++) {
+        cursar = cursar + factor * (extreme - cursar);
+        if ((isUp && $high[i] > extreme) || (!isUp && $low[i] < extreme)) {
+            factor = ((factor <= maxfactor) ? factor + stepfactor : maxfactor);
+            extreme = (isUp) ? $high[i] : $low[i];
+        }
+        if ((isUp && $low[i] < cursar) || (!isUp && cursar > $high[i])) {
+            isUp = !isUp;
+            factor = stepfactor;
+            cursar = (isUp) ? Math.min(...$low.slice(i - 2, i + 1)) : Math.max(...$high.slice(i - 2, i + 1));
+        }
+        psar.push(cursar);
+    }
+    return psar;
+}
