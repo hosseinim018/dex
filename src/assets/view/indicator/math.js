@@ -667,3 +667,24 @@ export function stoch($high, $low, $close, window, signal, smooth) {
     }
     return { line: K, signal: sma(K, signal) };
 }
+
+/**
+ * Calculates the Stochastic RSI (StochRSI) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating RSI.
+ * @param {number} signal - The signal window size for calculating the moving average of StochRSI.
+ * @param {number} smooth - The smoothing factor for StochRSI.
+ * @returns {Object} - The StochRSI line and signal values.
+ */
+export function stochRsi($close, window, signal, smooth) {
+    let _rsi = rsi($close, window);
+    let extreme = rolling((s) => {
+        return { low: Math.min(...s), high: Math.max(...s) };
+    }, _rsi, window);
+    let K = pointwise((rsi, e) => (rsi - e.low) / (e.high - e.low), _rsi, extreme);
+    K[0] = 0;
+    if (smooth > 1) {
+        K = sma(K, smooth);
+    }
+    return { line: K, signal: sma(K, signal) };
+}
