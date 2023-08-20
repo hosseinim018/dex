@@ -489,3 +489,15 @@ export function adx($high, $low, $close, window) {
     adx: new Array(14).fill(NaN).concat(ema(dx.slice(14), 2 * window - 1)),
   };
 }
+
+/**
+ * Calculates the Bollinger Bands Percentage (BBP) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating the Bollinger Bands.
+ * @param {number} mult - The standard deviation multiplier.
+ * @returns {number[]} - The BBP values.
+ */
+export function bbp($close, window, mult) {
+  let band = bb($close, window, mult);
+  return pointwise((p, u, l) => (p - l) / (u - l), $close, band.upper, band.lower);
+}
