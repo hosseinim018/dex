@@ -544,3 +544,26 @@ export function fi($close, $volume, window) {
     let delta = rolling((s) => s[s.length - 1] - s[0], $close, 2);
     return ema(pointwise((a, b) => a * b, delta, $volume), window);
 }
+
+/**
+ * Calculates the Know Sure Thing (KST) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} w1 - The first ROC window size.
+ * @param {number} w2 - The second ROC window size.
+ * @param {number} w3 - The third ROC window size.
+ * @param {number} w4 - The fourth ROC window size.
+ * @param {number} s1 - The first RCMA window size.
+ * @param {number} s2 - The second RCMA window size.
+ * @param {number} s3 - The third RCMA window size.
+ * @param {number} s4 - The fourth RCMA window size.
+ * @param {number} sig - The signal window size.
+ * @returns {Object} - The KST line and signal values.
+ */
+export function kst($close, w1, w2, w3, w4, s1, s2, s3, s4, sig) {
+    let rcma1 = sma(roc($close, w1), s1);
+    let rcma2 = sma(roc($close, w2), s2);
+    let rcma3 = sma(roc($close, w3), s3);
+    let rcma4 = sma(roc($close, w4), s4);
+    let line = pointwise((a, b, c, d) => a + b * 2 + c * 3 + d * 4, rcma1, rcma2, rcma3, rcma4);
+    return { line: line, signal: sma(line, sig) };
+}
