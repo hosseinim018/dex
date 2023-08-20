@@ -713,3 +713,15 @@ export function vi($high, $low, $close, window) {
     }, 0), trueRange($high, $low, $close), window);
     return { plus: pointwise((a, b) => a / b, apv, atr), minus: pointwise((a, b) => a / b, anv, atr) };
 }
+
+/**
+ * Calculates the Williams %R indicator of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating Williams %R.
+ * @returns {number[]} - The Williams %R values.
+ */
+export function williams($high, $low, $close, window) {
+    return pointwise((x) => x - 100, stoch($high, $low, $close, window, 1, 1).line);
+}
