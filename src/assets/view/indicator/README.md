@@ -54,7 +54,7 @@ Explain how to use your project and include code examples if necessary.
 - [keltner($high, $low, $close, window, mult)](###keltner): Calculates the Keltner Channels of high, low, and close prices using a specified window size and multiplier.
 - [psar($high, $low, stepfactor, maxfactor)](###psar): Calculates the Parabolic Stop and Reverse (PSAR) values based on high and low prices, step factor, and maximum factor.
 - [tema($close, window)](###tema): Calculates the Triple Exponential Moving Average (TEMA) of a series.
-- []():
+- [vbp($close, $volume, zones, left, right)](###vbp): Calculates the Volume By Price (VBP) of a series.
 - []():
 - []():
 - []():
