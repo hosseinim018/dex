@@ -501,3 +501,20 @@ export function bbp($close, window, mult) {
   let band = bb($close, window, mult);
   return pointwise((p, u, l) => (p - l) / (u - l), $close, band.upper, band.lower);
 }
+
+/**
+ * Calculates the Commodity Channel Index (CCI) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating CCI.
+ * @param {number} mult - The multiplier value.
+ * @returns {number[]} - The CCI values.
+ */
+export function cci($high, $low, $close, window, mult) {
+  let tp = typicalPrice($high, $low, $close);
+  let tpsma = sma(tp, window);
+  let tpmad = madev(tp, window);
+  tpmad[0] = Infinity;
+  return pointwise((a, b, c) => (a - b) / (c * mult), tp, tpsma, tpmad);
+}
