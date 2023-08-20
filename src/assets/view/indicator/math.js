@@ -173,3 +173,14 @@ export function stdev(series, window) {
 export function madev(series, window) {
   return rolling((s) => mad(s), series, window);
 }
+
+/**
+ * Calculates the Exponential Deviation (EXPDEV) of a series using a rolling window.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the EXPDEV.
+ * @returns {number[]} - The EXPDEV values.
+ */
+export function expdev(series, window) {
+  const sqrDiff = pointwise((a, b) => (a - b) * (a - b), series, ema(series, window));
+  return pointwise((x) => Math.sqrt(x), ema(sqrDiff, window));
+}
