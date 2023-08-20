@@ -184,3 +184,16 @@ export function expdev(series, window) {
   const sqrDiff = pointwise((a, b) => (a - b) * (a - b), series, ema(series, window));
   return pointwise((x) => Math.sqrt(x), ema(sqrDiff, window));
 }
+
+/**
+ * Calculates the Average True Range (ATR) of a series using a rolling window.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for the ATR.
+ * @returns {number[]} - The ATR values.
+ */
+export function atr($high, $low, $close, window) {
+  const tr = trueRange($high, $low, $close);
+  return ema(tr, 2 * window - 1);
+}
