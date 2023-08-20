@@ -744,3 +744,18 @@ export function FibonacciRetracement(pivot1, pivot2) {
     });
     return obj;
 }
+
+/**
+ * Calculates the regression line value for a given x-coordinate using two points.
+ * @param {number} x - The x-coordinate.
+ * @param {number[]} point1 - The first point (x, y).
+ * @param {number[]} point2 - The second point (x, y).
+ * @returns {number} - The y-coordinate on the regression line.
+ */
+export function regression(x, point1, point2) {
+    // find slope and y-intercept
+    const slope = (point2[1] - point1[1]) / (point2[0] - point1[0]);
+    const yIntercept = point1[1] - slope * point1[0];
+    // the final equation will be: y = slope*x + yIntercept
+    return slope * x + yIntercept;
+}
