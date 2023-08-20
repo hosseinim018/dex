@@ -71,6 +71,10 @@ Explain how to use your project and include code examples if necessary.
 - [rsi($close, window)](###rsi): Calculates the Relative Strength Index (RSI) of a series.
 - [stoch($high, $low, $close, window, signal, smooth)](###stoch): Calculates the Stochastic Oscillator of a series.
 - [stochRsi($close, window, signal, smooth)](###stochRsi): Calculates the Stochastic RSI (StochRSI) of a series.
+- [vi($high, $low, $close, window)](###vi): Calculates the Vertical Horizontal Filter (VI) of a series.
+- [](###):
+- [](###):
+- [](###):
 - [](###):
 ## Table of Contents
 
