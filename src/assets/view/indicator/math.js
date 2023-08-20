@@ -398,3 +398,44 @@ export function vwap($high, $low, $close, $volume) {
   }
   return pointwise((a, b) => a / b, cumulVTP, cumulV);
 }
+
+/**
+ * Calculates the Zigzag indicator of a series.
+ * @param {number[]} $time - The time values of the series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number} percent - The percentage threshold for the Zigzag indicator.
+ * @returns {Object} - The Zigzag indicator values.
+ */
+export function zigzag($time, $high, $low, percent) {
+  let lowest = $low[0];
+  let thattime = $time[0];
+  let isUp = false;
+  let highest = $high[0];
+  const time = [];
+  const zigzag = [];
+  for (let i = 1, len = $time.length; i < len; i++) {
+    if (isUp) {
+      if ($high[i] > highest) {
+        thattime = $time[i];
+        highest = $high[i];
+      } else if ($low[i] < lowest + (highest - lowest) * (100 - percent) / 100) {
+        isUp = false;
+        time.push(thattime);
+        zigzag.push(highest);
+        lowest = $low[i];
+      }
+    } else {
+      if ($low[i] < lowest) {
+        thattime = $time[i];
+        lowest = $low[i];
+      } else if ($high[i] > lowest + (highest - lowest) * percent / 100) {
+        isUp = true;
+        time.push(thattime);
+        zigzag.push(lowest);
+        highest = $high[i];
+      }
+    }
+  }
+  return { time, price: zigzag };
+}
