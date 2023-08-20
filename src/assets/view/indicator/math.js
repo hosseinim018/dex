@@ -618,3 +618,17 @@ export function obv($close, $volume, signal) {
     }
     return { line: obv, signal: sma(obv, signal) };
 }
+
+/**
+ * Calculates the Rate of Change (ROC) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating ROC.
+ * @returns {number[]} - The ROC values.
+ */
+export function roc($close, window) {
+    let result = new Array(window).fill(NaN);
+    for (let i = window, len = $close.length; i < len; i++) {
+        result.push(100 * ($close[i] - $close[i - window]) / $close[i - window]);
+    }
+    return result;
+}
