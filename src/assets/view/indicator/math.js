@@ -153,3 +153,13 @@ export function ema(series, window, start) {
   }
   return ema;
 }
+
+/**
+ * Calculates the standard deviation (SD) of a series using a rolling window.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the SD.
+ * @returns {number[]} - The SD values.
+ */
+export function stdev(series, window) {
+  return rolling((s) => sd(s), series, window);
+}
