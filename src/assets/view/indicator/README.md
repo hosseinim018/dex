@@ -74,8 +74,8 @@ Explain how to use your project and include code examples if necessary.
 - [vi($high, $low, $close, window)](###vi): Calculates the Vertical Horizontal Filter (VI) of a series.
 - [williams($high, $low, $close, window)](###williams): Calculates the Williams %R indicator of a series.
 - [FibonacciRetracement(pivot1, pivot2)](###FibonacciRetracement): Calculates the Fibonacci Retracement levels based on two pivot points.
-- [](###):
-- [](###):
+- [regression(x, point1, point2)](###regression): Calculates the regression line value for a given x-coordinate using two points.
+
 ## Table of Contents
 
 - [vi](#vi)
