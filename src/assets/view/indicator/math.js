@@ -197,3 +197,22 @@ export function atr($high, $low, $close, window) {
   const tr = trueRange($high, $low, $close);
   return ema(tr, 2 * window - 1);
 }
+
+/**
+ * Performs Wilder smoothing on a series using a rolling window.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the Wilder smoothing.
+ * @returns {number[]} - The smoothed series.
+ */
+export function wilderSmooth(series, window) {
+  const result = new Array(window).fill(NaN);
+  result.push(
+    series
+      .slice(1, window + 1)
+      .reduce((sum, item) => sum + item, 0)
+  );
+  for (let i = window + 1; i < series.length; i++) {
+    result.push((1 - 1 / window) * result[i - 1] + series[i]);
+  }
+  return result;
+}
