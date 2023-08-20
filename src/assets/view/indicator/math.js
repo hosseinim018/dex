@@ -23,3 +23,16 @@ export function wma(series, window) {
   }
   return result;
 }
+
+/**
+ * Calculates the mean (average) of a series.
+ * @param {number[]} series - The input series.
+ * @returns {number} - The mean of the series.
+ */
+export function mean(series) {
+  let sum = 0;
+  for (let i = 0; i < series.length; i++) {
+    sum += series[i];
+  }
+  return sum / series.length;
+}
