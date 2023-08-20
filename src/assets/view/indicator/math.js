@@ -647,3 +647,23 @@ export function rsi($close, window) {
     }
     return pointwise((a, b) => 100 - 100 / (1 + a / b), ema(gains, 2 * window - 1), ema(loss, 2 * window - 1));
 }
+
+/**
+ * Calculates the Stochastic Oscillator of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating the highest and lowest values.
+ * @param {number} signal - The signal window size for calculating the moving average of the Stochastic Oscillator.
+ * @param {number} smooth - The smoothing factor for the Stochastic Oscillator.
+ * @returns {Object} - The Stochastic Oscillator line and signal values.
+ */
+export function stoch($high, $low, $close, window, signal, smooth) {
+    let lowest = rolling((s) => Math.min(...s), $low, window);
+    let highest = rolling((s) => Math.max(...s), $high, window);
+    let K = pointwise((h, l, c) => 100 * (c - l) / (h - l), highest, lowest, $close);
+    if (smooth > 1) {
+        K = sma(K, smooth);
+    }
+    return { line: K, signal: sma(K, signal) };
+}
