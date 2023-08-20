@@ -92,6 +92,19 @@ wma(series, window)
    - Returns:
         (array): The WMA values.
 
+### mean
+
+Calculates the mean (average) of a series.
+
+```javascript
+mean(series)
+```
+   - Parameters:
+      - series (array): The input series.
+
+   - Returns:
+        (number): The mean of the series.
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
