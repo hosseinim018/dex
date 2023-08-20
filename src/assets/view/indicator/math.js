@@ -227,3 +227,24 @@ export function wilderSmooth(series, window) {
 export function typicalPrice($high, $low, $close) {
   return pointwise((a, b, c) => (a + b + c) / 3, $high, $low, $close);
 }
+
+/**
+ * Calculates the True Range (TR) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @returns {number[]} - The TR values.
+ */
+export function trueRange($high, $low, $close) {
+  const tr = [$high[0] - $low[0]];
+  for (let i = 1, len = $low.length; i < len; i++) {
+    tr.push(
+      Math.max(
+        $high[i] - $low[i],
+        Math.abs($high[i] - $close[i - 1]),
+        Math.abs($low[i] - $close[i - 1])
+      )
+    );
+  }
+  return tr;
+}
