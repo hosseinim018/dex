@@ -117,3 +117,13 @@ export function rolling(operation, series, window) {
   return result;
 }
 
+/**
+ * Calculates the Mean Absolute Error (MAE) between two series.
+ * @param {number[]} f - The first input series.
+ * @param {number[]} g - The second input series.
+ * @returns {number} - The MAE between the two series.
+ */
+export function mae(f, g) {
+  const absDiff = pointwise((a, b) => Math.abs(a - b), f, g);
+  return f.length !== g.length ? Infinity : mean(absDiff);
+}
