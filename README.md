@@ -11,13 +11,13 @@ this module prepare some oprating of technical analysis.
 
 ## Table of Contents
 
-- [Installation](##Installation)
-- [Usage](##Usage)
-- [License](##License)
-- [Contributing](##Contributing)
-- [Versioning](##Versioning)
-- [Build_and_Test](##Build_and_Test)
-- [Support](##Support)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#License)
+- [Contributing](#Contributing)
+- [Versioning](#Versioning)
+- [Build_and_Test](#Build_and_Test)
+- [Support](#Support)
 
 
 ## Installation
