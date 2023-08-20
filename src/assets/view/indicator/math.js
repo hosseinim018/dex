@@ -137,3 +137,19 @@ export function mae(f, g) {
 export function sma(series, window) {
   return rolling((s) => mean(s), series, window);
 }
+
+/**
+ * Calculates the Exponential Moving Average (EMA) of a series.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the EMA.
+ * @param {number} start - The initial value for the EMA.
+ * @returns {number[]} - The EMA values.
+ */
+export function ema(series, window, start) {
+  const weight = 2 / (window + 1);
+  const ema = [start ? start : mean(series.slice(0, window))];
+  for (let i = 1, len = series.length; i < len; i++) {
+    ema.push(series[i] * weight + (1 - weight) * ema[i - 1]);
+  }
+  return ema;
+}
