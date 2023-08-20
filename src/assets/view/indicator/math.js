@@ -1,4 +1,17 @@
 /**
+ * @module view-technical
+ * @description this module prepare some oprating fo rtechnical analysis.
+ * @version 1.0.0
+ * @license MIT
+ *
+ * Detailed description of the module and its usage.
+ *
+ * @example
+ * // Usage example or code snippet.
+ */
+
+
+/**
  * Calculates the Weighted Moving Average (WMA) of a series.
  * @param {number[]} series - The input series.
  * @param {number} window - The window size for the WMA.
