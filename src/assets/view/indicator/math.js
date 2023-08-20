@@ -76,3 +76,11 @@ export function cor(f, g) {
   return (Efg - Ef * Eg) / Math.sqrt((Ef2 - Ef * Ef) * (Eg2 - Eg * Eg));
 }
 
+/**
+ * Calculates the Mean Absolute Deviation (MAD) of a series.
+ * @param {number[]} array - The input series.
+ * @returns {number} - The MAD of the series.
+ */
+export function mad(array) {
+  return mae(array, new Array(array.length).fill(mean(array)));
+}
