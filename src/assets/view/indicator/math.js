@@ -533,3 +533,37 @@ export function cho($high, $low, $close, $volume, winshort, winlong) {
   let adli = adl($high, $low, $close, $volume);
   return pointwise((s, l) => s - l, ema(adli, winshort), ema(adli, winlong));
 }
+
+/**
+ * Calculates the Average Directional Index (ADX) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for smoothing.
+ * @returns {Object} - The ADX, DIP, and DIM values.
+ */
+export function adx($high, $low, $close, window) {
+  let dmp = [0];
+  let dmm = [0];
+  for (let i = 1, len = $low.length; i < len; i++) {
+    let hd = $high[i] - $high[i - 1];
+    let ld = $low[i - 1] - $low[i];
+    dmp.push(hd > ld ? Math.max(hd, 0) : 0);
+    dmm.push(ld > hd ? Math.max(ld, 0) : 0);
+  }
+  let str = wilderSmooth(trueRange($high, $low, $close), window);
+  dmp = wilderSmooth(dmp, window);
+  dmm = wilderSmooth(dmm, window);
+  let dip = pointwise((a, b) => (100 * a) / b, dmp, str);
+  let dim = pointwise((a, b) => (100 * a) / b, dmm, str);
+  let dx = pointwise(
+    (a, b) => (100 * Math.abs(a - b)) / (a + b),
+    dip,
+    dim
+  );
+  return {
+    dip,
+    dim,
+    adx: new Array(14).fill(NaN).concat(ema(dx.slice(14), 2 * window - 1)),
+  };
+}
