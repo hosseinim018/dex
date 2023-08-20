@@ -34,7 +34,7 @@ import * as vt from "./view-technical";
 
 ## summary of each function:
 
-- [wma(series, window)]((#wma)): Calculates the Weighted Moving Average of a series using a specified window size.
+- [wma(series, window)](#wma): Calculates the Weighted Moving Average of a series using a specified window size.
 - [mean(series)](#mean): Calculates the mean (average) of a series.
 - [sd(series)](###sd): Calculates the standard deviation of a series.
 - [cov(f, g)](###cov): Calculates the covariance between two series, f and g.
