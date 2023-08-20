@@ -62,7 +62,7 @@ Explain how to use your project and include code examples if necessary.
 - [bbp($close, window, mult)](###bbp): Calculates the Bollinger Bands Percentage (BBP) of a series.
 - [cci($high, $low, $close, window, mult)](###cci): Calculates the Commodity Channel Index (CCI) of a series.
 - [cho($high, $low, $close, $volume, winshort, winlong)](###cho): Calculates the Chande's Oscillator (CHO) of a series.
-- [](###):
+- [fi($close, $volume, window)](###fi): Calculates the Force Index (FI) of a series.
 - [](###):
 - [](###):
 - [](###):
