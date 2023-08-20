@@ -439,3 +439,19 @@ export function zigzag($time, $high, $low, percent) {
   }
   return { time, price: zigzag };
 }
+
+/**
+ * Calculates the Accumulation/Distribution Line (ADL) of a series.
+ * @param {number[]} $high - The high values of the series.
+ * @param {number[]} $low - The low values of the series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number[]} $volume - The volume values of the series.
+ * @returns {number[]} - The ADL values.
+ */
+export function adl($high, $low, $close, $volume) {
+  const adl = [$volume[0] * (2 * $close[0] - $low[0] - $high[0]) / ($high[0] - $low[0])];
+  for (let i = 1, len = $high.length; i < len; i++) {
+    adl[i] = adl[i - 1] + $volume[i] * (2 * $close[i] - $low[i] - $high[i]) / ($high[i] - $low[i]);
+  }
+  return adl;
+}
