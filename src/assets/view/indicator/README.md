@@ -57,6 +57,7 @@ Explain how to use your project and include code examples if necessary.
 - [vbp($close, $volume, zones, left, right)](###vbp): Calculates the Volume By Price (VBP) of a series.
 - [vwap($high, $low, $close, $volume)](###vwap): Calculates the Volume Weighted Average Price (VWAP) of a series.
 - [zigzag($time, $high, $low, percent)](###zigzag): Calculates the Zigzag indicator of a series.
+- [adl($high, $low, $close, $volume)](###adl): Calculates the Accumulation/Distribution Line (ADL) of a series.
 
 ## Table of Contents
 
