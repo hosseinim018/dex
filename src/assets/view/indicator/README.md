@@ -76,28 +76,21 @@ Explain how to use your project and include code examples if necessary.
 - [FibonacciRetracement(pivot1, pivot2)](###FibonacciRetracement): Calculates the Fibonacci Retracement levels based on two pivot points.
 - [regression(x, point1, point2)](###regression): Calculates the regression line value for a given x-coordinate using two points.
 
-## Table of Contents
+## apis
 
-- [vi](#vi)
-- [williams](#williams)
-- [FibonacciRetracement](#fibonacciretracement)
-- [regression](#regression)
+### wma
 
-## vi
-
-Calculates the Vertical Horizontal Filter (VI) of a series.
+Calculates the Weighted Moving Average (WMA) of a series.
 
 ```javaScript
-vi($high, $low, $close, window)
+wma(series, window)
 ```
    - Parameters:
-      -  $high (array): The high values of the series.
-      -  $low (array): The low values of the series.
-      - $close (array): The close values of the series.
-      - window (number): The window size for calculating VI.
+      - series (array): The input series.
+      - window (number): The window size for the WMA.
 
    - Returns:
-        (object): An object containing the VI plus and minus values.
+        (array): The WMA values.
 
 ## License
 
