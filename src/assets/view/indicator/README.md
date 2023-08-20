@@ -68,7 +68,7 @@ Explain how to use your project and include code examples if necessary.
 - [mfi($high, $low, $close, $volume, window)](###mfi): Calculates the Money Flow Index (MFI) of a series.
 - [obv($close, $volume, signal)](###obv): Calculates the On-Balance Volume (OBV) of a series.
 - [roc($close, window)](###roc): Calculates the Rate of Change (ROC) of a series.
-- [](###):
+- [rsi($close, window)](###rsi): Calculates the Relative Strength Index (RSI) of a series.
 - [](###):
 - [](###):
 - [](###):
