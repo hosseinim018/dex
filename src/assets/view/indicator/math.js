@@ -347,3 +347,35 @@ export function tema($close, window) {
   const ema2 = ema(ema1, window);
   return pointwise((a, b, c) => 3 * a - 3 * b + c, ema1, ema2, ema(ema2, window));
 }
+
+/**
+ * Calculates the Volume By Price (VBP) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number[]} $volume - The volume values of the series.
+ * @param {number} zones - The number of zones in the VBP.
+ * @param {number} left - The starting index for calculating the VBP.
+ * @param {number} right - The ending index for calculating the VBP.
+ * @returns {Object} - The VBP values.
+ */
+export function vbp($close, $volume, zones, left, right) {
+  let total = 0;
+  let bottom = Infinity;
+  let top = -Infinity;
+  const vbp = new Array(zones).fill(0);
+  right = !isNaN(right) ? right : $close.length;
+  for (let i = left; i < right; i++) {
+    total += $volume[i];
+    top = top < $close[i] ? $close[i] : top;
+    bottom = bottom > $close[i] ? $close[i] : bottom;
+  }
+  for (let i = left; i < right; i++) {
+    vbp[Math.floor(($close[i] - bottom) / (top - bottom) * (zones - 1))] += $volume[i];
+  }
+  return {
+    bottom,
+    top,
+    volumes: vbp.map((x) => {
+      return x / total;
+    }),
+  };
+}
