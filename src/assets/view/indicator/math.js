@@ -61,3 +61,18 @@ export function cov(f, g) {
   return Efg - Ef * Eg;
 }
 
+/**
+ * Calculates the correlation coefficient between two series.
+ * @param {number[]} f - The first input series.
+ * @param {number[]} g - The second input series.
+ * @returns {number} - The correlation coefficient between the two series.
+ */
+export function cor(f, g) {
+  let Ef = mean(f),
+    Eg = mean(g);
+  let Ef2 = mean(pointwise((a) => a * a, f));
+  let Eg2 = mean(pointwise((a) => a * a, g));
+  let Efg = mean(pointwise((a, b) => a * b, f, g));
+  return (Efg - Ef * Eg) / Math.sqrt((Ef2 - Ef * Ef) * (Eg2 - Eg * Eg));
+}
+
