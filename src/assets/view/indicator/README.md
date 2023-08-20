@@ -60,7 +60,7 @@ Explain how to use your project and include code examples if necessary.
 - [adl($high, $low, $close, $volume)](###adl): Calculates the Accumulation/Distribution Line (ADL) of a series.
 - [adx($high, $low, $close, window)](###adx): Calculates the Average Directional Index (ADX) of a series.
 - [bbp($close, window, mult)](###bbp): Calculates the Bollinger Bands Percentage (BBP) of a series.
-- [](###):
+- [cci($high, $low, $close, window, mult)](###cci): Calculates the Commodity Channel Index (CCI) of a series.
 - [](###):
 ## Table of Contents
 
