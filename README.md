@@ -27,6 +27,10 @@ Provide instructions on how to install and use your project.
 ## Usage
 
 Explain how to use your project and include code examples if necessary.
+importing:
+```javascript
+import * as vt from "./view-technical";
+```
 
 ## summary of each function:
 
