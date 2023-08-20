@@ -603,3 +603,18 @@ export function mfi($high, $low, $close, $volume, window) {
     nmf = rolling((s) => s.reduce((sum, x) => sum + x, 0), nmf, window);
     return pointwise((a, b) => 100 - 100 / (1 + a / b), pmf, nmf);
 }
+
+/**
+ * Calculates the On-Balance Volume (OBV) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number[]} $volume - The volume values of the series.
+ * @param {number} signal - The signal window size for calculating the moving average of OBV.
+ * @returns {Object} - The OBV line and signal values.
+ */
+export function obv($close, $volume, signal) {
+    let obv = [0];
+    for (let i = 1, len = $close.length; i < len; i++) {
+        obv.push(obv[i - 1] + Math.sign($close[i] - $close[i - 1]) * $volume[i]);
+    }
+    return { line: obv, signal: sma(obv, signal) };
+}
