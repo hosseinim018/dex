@@ -632,3 +632,18 @@ export function roc($close, window) {
     }
     return result;
 }
+/**
+ * Calculates the Relative Strength Index (RSI) of a series.
+ * @param {number[]} $close - The close values of the series.
+ * @param {number} window - The window size for calculating RSI.
+ * @returns {number[]} - The RSI values.
+ */
+export function rsi($close, window) {
+    let gains = [0], loss = [1e-14];
+    for (let i = 1, len = $close.length; i < len; i++) {
+        let diff = $close[i] - $close[i - 1];
+        gains.push(diff >= 0 ? diff : 0);
+        loss.push(diff < 0 ? -diff : 0);
+    }
+    return pointwise((a, b) => 100 - 100 / (1 + a / b), ema(gains, 2 * window - 1), ema(loss, 2 * window - 1));
+}
