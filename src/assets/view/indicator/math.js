@@ -163,3 +163,13 @@ export function ema(series, window, start) {
 export function stdev(series, window) {
   return rolling((s) => sd(s), series, window);
 }
+
+/**
+ * Calculates the Mean Absolute Deviation (MAD) of a series using a rolling window.
+ * @param {number[]} series - The input series.
+ * @param {number} window - The window size for the MAD.
+ * @returns {number[]} - The MAD values.
+ */
+export function madev(series, window) {
+  return rolling((s) => mad(s), series, window);
+}
