@@ -725,3 +725,22 @@ export function vi($high, $low, $close, window) {
 export function williams($high, $low, $close, window) {
     return pointwise((x) => x - 100, stoch($high, $low, $close, window, 1, 1).line);
 }
+
+/**
+ * Calculates the Fibonacci Retracement levels based on two pivot points.
+ * @param {number} pivot1 - The first pivot point.
+ * @param {number} pivot2 - The second pivot point.
+ * @returns {Object} - The Fibonacci retracement levels.
+ */
+export function FibonacciRetracement(pivot1, pivot2) {
+    const retracements = [0, 0.236, 0.382, 0.5, 0.618, 0.786, 1];
+    const high = Math.max(pivot1, pivot2);
+    const low = Math.min(pivot1, pivot2);
+    const range = high - low;
+    const levels = retracements.map(level => high - range * level);
+    const obj = {};
+    retracements.forEach((el, index) => {
+        obj[el] = levels[index];
+    });
+    return obj;
+}
