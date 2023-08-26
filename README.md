@@ -1,7 +1,7 @@
 # My Project
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)](https://github.com/yourusername/yourproject)
+[![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)](https://github.com/hosseinim018/view-technical)
 [![Build Status](https://img.shields.io/travis/yourusername/yourproject/master.svg)](https://travis-ci.org/yourusername/yourproject)
 [![Test Coverage](https://img.shields.io/codecov/c/github/yourusername/yourproject.svg)](https://codecov.io/gh/yourusername/yourproject)
 
